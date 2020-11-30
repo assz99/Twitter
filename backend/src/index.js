@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors';) 
+
  
 const app = express();
 
@@ -17,9 +19,10 @@ app.use((req,res, next) =>{
     return next();
 });
 
+app.use(cors());
 app.use(express.json());
 app.use(require("./routes"));
 
-app.listen(3000,() => {
+server.listen(3000,() => {
     console.log("Servidor iniciado na porta 3000");
 });
