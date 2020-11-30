@@ -6,7 +6,11 @@ const cors = require('cors');
 const app = express();
 
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
+const io = require('socket.io')(server,{
+    cors: {
+    origin: "http://localhost:3001",
+    methods: ["GET", "POST"]
+  }});
 
 mongoose.connect('mongodb+srv://Assz:coiote00@cluster-assz.yxeq8.mongodb.net/projTwitter?retryWrites=true&w=majority',{ 
     useUnifiedTopology: true, 

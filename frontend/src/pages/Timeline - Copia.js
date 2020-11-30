@@ -19,7 +19,7 @@ export default class Timeline extends Component {
     };
 
     subscribeToEvents = () => {
-        const io = socket("http://localhost:3000");
+        const io = socket(process.env.API_URL);
     
         io.on("tweet", data => {
           this.setState({ tweets: [data, ...this.state.tweets] });
@@ -30,7 +30,7 @@ export default class Timeline extends Component {
             tweets: this.state.tweets.map(tweet => (tweet._id === data._id ? data : tweet))
           });
         });
-      };    
+      };
 
     handleNewTweet = async e => {
         if (e.keyCode !== 13) return;
