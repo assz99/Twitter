@@ -4,11 +4,12 @@ const cors = require('cors');
 
  
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 const server = require('http').Server(app);
 const io = require('socket.io')(server,{
     cors: {
-    origin: "http://localhost:3001",
+    origin: "http://192.168.0.16:3001",
     methods: ["GET", "POST"]
   }});
 
@@ -27,6 +28,6 @@ app.use(cors());
 app.use(express.json());
 app.use(require("./routes"));
 
-server.listen(3000,() => {
+server.listen(PORT,'192.168.0.16' ,() => {
     console.log("Servidor iniciado na porta 3000");
 });
